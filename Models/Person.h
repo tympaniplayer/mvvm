@@ -4,22 +4,19 @@
 // that uses this DLL. This way any other project whose source files include this file see 
 // MODELS_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
-#ifdef MODELS_EXPORTS
-#define MODELS_API __declspec(dllexport)
-#else
-#define MODELS_API __declspec(dllimport)
-#endif
+
 #include <string>
 using namespace std;
 // This class is exported from the Models.dll
-class MODELS_API Person {
+class Person {
 public:
     Person(void);
-    const char* GetFirstName(){ return firstName.c_str(); }
-    const char* GetLastName(){ return lastName.c_str(); }
-    const char* GetFullName(){ return string(firstName + " " + lastName).c_str(); }
+    const char* GetFirstName();
+    const char* GetLastName();
+    const char* GetFullName();
 private:
     string firstName;
     string lastName;
+    string fullName;
 };
 

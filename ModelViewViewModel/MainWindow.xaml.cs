@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ModelViewViewModelViewModel;
+
 namespace ModelViewViewModel
 {
     /// <summary>
@@ -25,6 +26,8 @@ namespace ModelViewViewModel
             MainView view = new MainView();
             view.PopulateList();
             var list = view.GetList();
+
+            var lastName = list[0].GetLastName();
             InitializeComponent();
         }
     }

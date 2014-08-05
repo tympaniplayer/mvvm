@@ -1,16 +1,49 @@
 #pragma once
-//#include <Person.h>
+#include<string>
+#include "../Models/Person.h"
+
+
 using namespace System::Collections::Generic;
 using namespace System;
-#include<string>
+
 namespace ModelViewViewModelViewModel{
+    public ref class ManagedPerson {
+    internal:
+        ManagedPerson(Person* person)
+        {
+            this->person = person;
+        }
+    public:
+        ManagedPerson()
+        {
+            this->person = new Person();
+        }
+
+        String^ GetFirstName()
+        {
+            return gcnew String(person->GetFirstName());
+        }
+
+        String^ GetLastName()
+        {
+            return gcnew String(person->GetLastName());
+        }
+
+        String^ GetFullName()
+        {
+            return gcnew String(person->GetFullName());
+        }
+    private:
+        Person* person;
+    };
+
     public ref class MainView
     {
     public:
         MainView();
         void PopulateList();
-        List<String ^>^ GetList(){ return myList; }
+        List<ManagedPerson ^>^ GetList(){ return myList; }
     private:
-        List<String ^>^ myList;
+        List<ManagedPerson ^>^ myList;
     };
 }
